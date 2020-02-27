@@ -14,7 +14,7 @@ mainContainer.appendChild(createHeader());
 
 mainContainer.appendChild(heroMaker());
 
-mainContainer.appendChild(postMaker());
+mainContainer.appendChild(postMaker('Hello WatchKit', 'Last month Apple released the anticipated WatchKit Framework fro developers in the form of iOS 8.2 beta SDK release. The WatchKit framework enable the developers to create Apple Watch Applications. In this article we are going to focus on the basic of getting started with the WatchLit frame work and developing app s for the apple watch.', '12', '24'));
 
 // In this method we will be wrapping everything in functions to make them available immediately and for usability later on if needed
 // Also instead of separating building parts of the code and then appending parts of the code. We will simply code things out 
@@ -95,35 +95,42 @@ function postMaker(title, body, amtComments, amtLikes) {
     // like before create overarching div/container
     const postContainer = document.createElement('div');
     // bootstrap style it by adding classes
-    postContainer.classList.add('container','row','m-2');
-    // create the post title element
+    // still having a lot of trouble with these bootstrap classes.. having to add 'margin-left 5' just to get the post toward center of doc.. seems hacky
+    postContainer.classList.add('container','row','ml-5','mt-4');
+    // create the post title element, then style it 
     const postTitle = document.createElement('h2');
-    // space reserved for styling post title
-    // point the postTitle to the title parameter given by user as input
+    postTitle.style.color = '#186abf'
+    // point the postTitle to the 'title' parameter given by user as input
     postTitle.innerText = title;
     // append the title to the post container
     postContainer.appendChild(postTitle);
-    
     // create main body of post/review
     const postBody = document.createElement('p');
     // space reserved to style paragraph
-    // point postBody to parameter input for the actual text of post
+    // point postBody to parameter input 'body' for the actual text of post
     postBody.innerText = body;
     // append body portion to the main post container
     postContainer.appendChild(postBody);
 
     // create comments/likes 'bar' div
     const feedbackBar = document.createElement('div');
-    feedbackBar.classList.add('row');
-    // space reserved for styling comments bar
+    //feedbackBar.classList.add('row');
+    // styling the feedback bar with bg color & flexbasis-100 to span entire length of postContainer div
+    feedbackBar.style.flexBasis = '100%';
+    feedbackBar.style.backgroundColor = '#f0902d'
+    feedbackBar.style.color = 'white';
     // create comments span
     const comments = document.createElement('span');
     //styling for comments
-    // Using inner HTML method we pull in the parameter of comments then use string concat with word 'comments'
+    comments.style.marginLeft = '1em';
+    comments.style.padding = '.2em';
+    // Using inner HTML method we pull in the parameter (amtComments) of comments then use string concat with word 'comments'
     comments.innerHTML = amtComments + ' comments';
     // attach to feedback bar
     feedbackBar.appendChild(comments);
     const likes = document.createElement('span');
+    likes.style.marginLeft = '4.5em';
+    // same as above: pull in parameter amtLikes and string concat 
     likes.innerHTML = amtLikes + ' likes';
     feedbackBar.appendChild(likes);
     postContainer.appendChild(feedbackBar);
