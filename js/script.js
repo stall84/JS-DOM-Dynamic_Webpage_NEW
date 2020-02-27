@@ -14,8 +14,8 @@ mainContainer.appendChild(createHeader());
 
 mainContainer.appendChild(heroMaker());
 
-mainContainer.appendChild(postMaker('Hello WatchKit', 'Last month Apple released the anticipated WatchKit Framework fro developers in the form of iOS 8.2 beta SDK release. The WatchKit framework enable the developers to create Apple Watch Applications. In this article we are going to focus on the basic of getting started with the WatchLit frame work and developing app s for the apple watch.', '12', '24'));
-
+mainContainer.appendChild(postMaker('Hello WatchKit', 'Last month <a target="_blank" style="color:#ff0800" href="http://www.apple.com">Apple</a> released the anticipated WatchKit Framework fro developers in the form of iOS 8.2 beta SDK release. The WatchKit framework enable the developers to create Apple Watch Applications. In this article we are going to focus on the basic of getting started with the WatchLit frame work and developing app s for the apple watch.', '12', '24'));
+mainContainer.appendChild(postMaker('Introduction to Swift', 'Swift is a modern programming language developed by <a target="_blank" style="color:#ff0800" href="http://www.apple.com">Apple</a> to create the next generation of iOS and OSX applications. Swift is a fairly new language and still in development but it clearly reflects the intentions and the future direction. This article will revolve around the basic concepts in the Swift language and how you can get started.', '15','45'));
 // In this method we will be wrapping everything in functions to make them available immediately and for usability later on if needed
 // Also instead of separating building parts of the code and then appending parts of the code. We will simply code things out 
 // as they would linearly arise on the page
@@ -33,9 +33,6 @@ function createHeader() {
     headerContainer.style.margin = '2.1em';
     //headerContainer.style.margin = '1em';
     
-
-    
-
     // nav title 
     const pageTitle = document.createElement('h1');
     // using innerText method instead of createTextNode
@@ -83,7 +80,7 @@ function heroMaker() {
     heroContainer.appendChild(heroPara);
 
     return heroContainer;
-}
+};
 
 
 
@@ -107,11 +104,10 @@ function postMaker(title, body, amtComments, amtLikes) {
     // create main body of post/review
     const postBody = document.createElement('p');
     // space reserved to style paragraph
-    // point postBody to parameter input 'body' for the actual text of post
-    postBody.innerText = body;
+    // point postBody to parameter input 'body' for the actual text of post. used innerHTML method instead of innerText so that I could add anchor links within the post body
+    postBody.innerHTML = body;
     // append body portion to the main post container
     postContainer.appendChild(postBody);
-
     // create comments/likes 'bar' div
     const feedbackBar = document.createElement('div');
     //feedbackBar.classList.add('row');
@@ -137,8 +133,20 @@ function postMaker(title, body, amtComments, amtLikes) {
 
     return postContainer
 
-
-
-
-
 }
+// we'll create a 'footer' section that will consist of a button to write/post a new review.
+function makeFooter() {
+
+    // create container div to hold the button 
+    const buttonContainer = document.createElement('div');
+    container.classList.add('row', 'm-4')
+
+    // create button element and add bootstrap styling to it (good fkn luck with that)
+    const postButton = document.createElement('button');
+    postButton.classList.add('col-md-2', 'offset-md-9', 'btn', 'btn-primary', 'm-auto', 'col-4');
+
+
+
+    return buttonContainer
+
+};
