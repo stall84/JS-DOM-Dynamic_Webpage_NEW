@@ -14,7 +14,7 @@ mainContainer.appendChild(createHeader());
 
 mainContainer.appendChild(heroMaker());
 
-mainContainer.appendChild(posts());
+mainContainer.appendChild(postMaker());
 
 // In this method we will be wrapping everything in functions to make them available immediately and for usability later on if needed
 // Also instead of separating building parts of the code and then appending parts of the code. We will simply code things out 
@@ -90,7 +90,47 @@ function heroMaker() {
 // We will create a single function that can/will be used to make the posts section(s), since they will all use the same 
 // formats and stylings, just different content added.
 
-function postMaker() {
+function postMaker(title, body, amtComments, amtLikes) {
+
+    // like before create overarching div/container
+    const postContainer = document.createElement('div');
+    // bootstrap style it by adding classes
+    postContainer.classList.add('container','row','m-2');
+    // create the post title element
+    const postTitle = document.createElement('h2');
+    // space reserved for styling post title
+    // point the postTitle to the title parameter given by user as input
+    postTitle.innerText = title;
+    // append the title to the post container
+    postContainer.appendChild(postTitle);
+    
+    // create main body of post/review
+    const postBody = document.createElement('p');
+    // space reserved to style paragraph
+    // point postBody to parameter input for the actual text of post
+    postBody.innerText = body;
+    // append body portion to the main post container
+    postContainer.appendChild(postBody);
+
+    // create comments/likes 'bar' div
+    const feedbackBar = document.createElement('div');
+    feedbackBar.classList.add('row');
+    // space reserved for styling comments bar
+    // create comments span
+    const comments = document.createElement('span');
+    //styling for comments
+    // Using inner HTML method we pull in the parameter of comments then use string concat with word 'comments'
+    comments.innerHTML = amtComments + ' comments';
+    // attach to feedback bar
+    feedbackBar.appendChild(comments);
+    const likes = document.createElement('span');
+    likes.innerHTML = amtLikes + ' likes';
+    feedbackBar.appendChild(likes);
+    postContainer.appendChild(feedbackBar);
+
+    return postContainer
+
+
 
 
 
