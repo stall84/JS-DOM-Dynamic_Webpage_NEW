@@ -29,8 +29,8 @@ function createHeader() {
     // add inline styling to headerContainer
     headerContainer.style.color = 'white';
     headerContainer.style.backgroundColor = '#57a9f7';
-    headerContainer.style.padding = '2em';
-    headerContainer.style.margin = '2.1em';
+    headerContainer.style.padding = '.8em';
+    //headerContainer.style.margin = '.2em';
     //headerContainer.style.margin = '1em';
     
     // nav title 
@@ -64,7 +64,7 @@ function heroMaker() {
     // create container div for the hero content
     const heroContainer = document.createElement('div');
     // add bootstrap classes to hero container just created
-    heroContainer.classList.add('container', 'row', 'm-auto');
+    heroContainer.classList.add('container', 'row', 'm-2');
     heroContainer.style.backgroundColor = '#dddee0';
     const heroH1 = document.createElement('h1');
     const heroPara = document.createElement('p');
@@ -93,7 +93,7 @@ function postMaker(title, body, amtComments, amtLikes) {
     const postContainer = document.createElement('div');
     // bootstrap style it by adding classes
     // still having a lot of trouble with these bootstrap classes.. having to add 'margin-left 5' just to get the post toward center of doc.. seems hacky
-    postContainer.classList.add('container','row','ml-5','mt-4');
+    postContainer.classList.add('container','row','mt-4');
     // create the post title element, then style it 
     const postTitle = document.createElement('h2');
     postTitle.style.color = '#186abf'
